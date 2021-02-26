@@ -14,7 +14,9 @@ class AboutProjectController extends Controller
      */
     public function index()
     {
-        //
+        $aboutProject = AboutProject::all();
+
+        return view('backoffice/pages/aboutProject', compact('aboutProject'));
     }
 
     /**
@@ -35,7 +37,22 @@ class AboutProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'color' => 'required',
+            'number' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+        ]);
+
+        $store = new AboutProject;
+        $store->icon = $request->icon;
+        $store->color = $request->color;
+        $store->number = $request->number;
+        $store->description = $request->description;
+        $store->content = $request->content;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +72,11 @@ class AboutProjectController extends Controller
      * @param  \App\Models\AboutProject  $aboutProject
      * @return \Illuminate\Http\Response
      */
-    public function edit(AboutProject $aboutProject)
+    public function edit($id)
     {
-        //
+        $edit = AboutProject::find($id);
+
+        return view('backoffice/edit/aboutProjectEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +86,24 @@ class AboutProjectController extends Controller
      * @param  \App\Models\AboutProject  $aboutProject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AboutProject $aboutProject)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'color' => 'required',
+            'number' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+        ]);
+
+        $update = AboutProject::find($id);
+        $update->icon = $request->icon;
+        $update->color = $request->color;
+        $update->number = $request->number;
+        $update->description = $request->description;
+        $update->content = $request->content;
+        $update->save();
+        return redirect('/back-aboutProject');
     }
 
     /**
@@ -78,8 +112,10 @@ class AboutProjectController extends Controller
      * @param  \App\Models\AboutProject  $aboutProject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AboutProject $aboutProject)
+    public function destroy($id)
     {
-        //
+        $destroy = AboutProject::find($id);
+        $destroy->delete();
+        return redirect('/back-aboutProject');
     }
 }

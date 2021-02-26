@@ -14,7 +14,9 @@ class AboutDescriptionController extends Controller
      */
     public function index()
     {
-        //
+        $aboutDescription = AboutDescription::all();
+
+        return view('backoffice/pages/aboutDescription', compact('aboutDescription'));
     }
 
     /**
@@ -35,7 +37,16 @@ class AboutDescriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'description' => 'required',
+            'content' => 'required'
+        ]);
+
+        $store = new AboutDescription;
+        $store->description = $request->description;
+        $store->content = $request->content;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +66,11 @@ class AboutDescriptionController extends Controller
      * @param  \App\Models\AboutDescription  $aboutDescription
      * @return \Illuminate\Http\Response
      */
-    public function edit(AboutDescription $aboutDescription)
+    public function edit($id)
     {
-        //
+        $edit = AboutDescription::find($id);
+
+        return view('backoffice/edit/aboutDescriptionEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class AboutDescriptionController extends Controller
      * @param  \App\Models\AboutDescription  $aboutDescription
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AboutDescription $aboutDescription)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'description' => 'required',
+            'content' => 'required'
+        ]);
+
+        $update = AboutDescription::find($id);
+        $update->description = $request->description;
+        $update->content = $request->content;
+        $update->save();
+        return redirect('/back-aboutDescription');
     }
 
     /**
@@ -78,8 +100,10 @@ class AboutDescriptionController extends Controller
      * @param  \App\Models\AboutDescription  $aboutDescription
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AboutDescription $aboutDescription)
+    public function destroy($id)
     {
-        //
+        $destroy = AboutDescription::find($id);
+        $destroy->delete();
+        return redirect('/back-aboutDescription');
     }
 }

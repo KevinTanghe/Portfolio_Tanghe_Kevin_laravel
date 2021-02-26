@@ -17,6 +17,18 @@
                     <th scope="row">Hero</th>
                     <th><a class="btn btn-primary" href="/back-hero">Show</a></th>
                 </tr>
+                <tr>
+                    <th scope="row">About Title</th>
+                    <th><a class="btn btn-primary" href="/back-aboutTitle">Show</a></th>
+                </tr>
+                <tr>
+                    <th scope="row">About Description</th>
+                    <th><a class="btn btn-primary" href="/back-aboutDescription">Show</a></th>
+                </tr>
+                <tr>
+                    <th scope="row">About Project</th>
+                    <th><a class="btn btn-primary" href="/back-aboutProject">Show</a></th>
+                </tr>
             </tbody>
         </table>
     </div>

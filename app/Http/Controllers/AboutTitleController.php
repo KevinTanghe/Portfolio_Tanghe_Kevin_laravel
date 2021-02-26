@@ -14,7 +14,9 @@ class AboutTitleController extends Controller
      */
     public function index()
     {
-        //
+        $aboutTitle = AboutTitle::all();
+
+        return view('backoffice/pages/aboutTitle', compact('aboutTitle'));
     }
 
     /**
@@ -35,7 +37,18 @@ class AboutTitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitre' => 'required',
+            'titre' => 'required',
+            'sousTitre' => 'required'
+        ]);
+
+        $store = new AboutTitle;
+        $store->ombreTitre = $request->ombreTitre;
+        $store->titre = $request->titre;
+        $store->sousTitre = $request->sousTitre;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class AboutTitleController extends Controller
      * @param  \App\Models\AboutTitle  $aboutTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(AboutTitle $aboutTitle)
+    public function edit($id)
     {
-        //
+        $edit = AboutTitle::find($id);
+
+        return view('backoffice/edit/aboutTitleEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class AboutTitleController extends Controller
      * @param  \App\Models\AboutTitle  $aboutTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AboutTitle $aboutTitle)
+    public function update(Request $request,$id)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitre' => 'required',
+            'titre' => 'required',
+            'sousTitre' => 'required'
+        ]);
+
+        $update = AboutTitle::find($id);
+        $update->ombreTitre = $request->ombreTitre;
+        $update->titre = $request->titre;
+        $update->sousTitre = $request->sousTitre;
+        $update->save();
+        return redirect('back-aboutTitle');
     }
 
     /**
@@ -78,8 +104,10 @@ class AboutTitleController extends Controller
      * @param  \App\Models\AboutTitle  $aboutTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AboutTitle $aboutTitle)
+    public function destroy($id)
     {
-        //
+        $destroy = AboutTitle::find($id);
+        $destroy->delete();
+        return redirect('/back-aboutTitle');
     }
 }
