@@ -14,7 +14,9 @@ class HeroController extends Controller
      */
     public function index()
     {
-        //
+        $hero = Hero::all();
+
+        return view('backoffice/pages/hero', compact('hero'));
     }
 
     /**
@@ -35,7 +37,16 @@ class HeroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'titre' => 'required',
+            'sousTitre' => 'required'
+        ]);
+
+        $store = new Hero;
+        $store->titre = $request->titre;
+        $store->sousTitre = $request->sousTitre;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +66,11 @@ class HeroController extends Controller
      * @param  \App\Models\Hero  $hero
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hero $hero)
+    public function edit($id)
     {
-        //
+        $edit = Hero::find($id);
+
+        return view('backoffice/edit/heroEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class HeroController extends Controller
      * @param  \App\Models\Hero  $hero
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hero $hero)
+    public function update(Request $request,$id)
     {
-        //
+        $validation = $request->validate([
+            'titre' => 'required',
+            'sousTitre' => 'required'
+        ]);
+
+        $update = Hero::find($id);
+        $update->titre = $request->titre;
+        $update->sousTitre = $request->sousTitre;
+        $update->save();
+        return redirect('/back-hero');
     }
 
     /**
@@ -78,8 +100,10 @@ class HeroController extends Controller
      * @param  \App\Models\Hero  $hero
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hero $hero)
+    public function destroy($id)
     {
-        //
+        $destroy = Hero::find($id);
+        $destroy->delete();
+        return redirect('/back-hero');
     }
 }

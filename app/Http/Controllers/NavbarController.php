@@ -37,6 +37,12 @@ class NavbarController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validation = $request->validate([
+            'titre' => 'required',
+            'chemin' => 'required'
+        ]);
+
         $store = new Navbar;
         $store->chemin = $request->chemin;
         $store->titre = $request->titre;
@@ -61,9 +67,12 @@ class NavbarController extends Controller
      * @param  \App\Models\Navbar  $navbar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Navbar $navbar)
+    public function edit($id)
     {
-        //
+
+        $edit = Navbar::find($id);
+
+        return view('backoffice/edit/navbarEdit', compact('edit'));
     }
 
     /**
@@ -73,14 +82,23 @@ class NavbarController extends Controller
      * @param  \App\Models\Navbar  $navbar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Navbar $navbar)
+    public function update(Request $request,$id)
     {
-        //
+        $validation = $request->validate([
+            'chemin' => 'required',
+            'titre' => 'required'
+        ]);
+
+        $update = Navbar::find($id);
+        $update->chemin = $request->chemin;
+        $update->titre = $request->titre;
+        $update->save();
+        return redirect('/back-navbar');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     *update
      * @param  \App\Models\Navbar  $navbar
      * @return \Illuminate\Http\Response
      */

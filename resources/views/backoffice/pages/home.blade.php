@@ -13,7 +13,10 @@
                     <th scope="row">Navbar</th>
                     <td><a class="btn btn-primary" href="/back-navbar">Show</a></td>
                 </tr>
-
+                <tr>
+                    <th scope="row">Hero</th>
+                    <th><a class="btn btn-primary" href="/back-hero">Show</a></th>
+                </tr>
             </tbody>
         </table>
     </div>

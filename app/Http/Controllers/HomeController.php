@@ -76,41 +76,6 @@ class HomeController extends Controller
 
     public function back() {
 
-        $navbar = Navbar::all();
-        $hero = Hero::all();
-
-        $aboutTitle = AboutTitle::all();
-        $aboutDescription = AboutDescription::all();
-        $aboutProject = AboutProject::all();
-        $aboutProgress = AboutProgress::all();
-
-        $resumeTitle = ResumeTitle::all();
-        $resumeSumary = ResumeSumary::all();
-        $resumeSumaryContent = ResumeSumaryContent::all();
-        $resumeEducation = ResumeEducation::all();
-        $resumeFirstPro = ResumeFirstPro::all();
-        $resumeFirstJob = ResumeFirstJob::all();
-        $resumeSecondPro = ResumeSecondPro::all();
-        $resumeSecondJob = resumeSecondJob::all();
-
-        $strongTitle = StrongTitle::all();
-        $strongCard = StrongCard::all();
-
-        $portfolioTitle = PortfolioTitle::all();
-        $portfolioGallery = PortfolioGallery::all();
-
-        $contactTitle = ContactTitle::all();
-        $contactSocial = ContactSocial::all();
-        $contactSocialLink = ContactSocialLink::all();
-        $contactEmail = ContactEmail::all();
-        $contactEmailLink = ContactEmailLink::all();
-        $contactCall = ContactCall::all();
-        $contactCallLink = ContactCallLink::all();
-
-        $footerTitle = FooterTitle::all();
-        $footerLink = FooterLink::all();
-        $footerCopyright = FooterCopyright::all();
-
-        return view('backoffice/pages/home', compact('navbar', 'hero', 'aboutTitle', 'aboutDescription', 'aboutProject', 'aboutProgress', 'resumeTitle', 'resumeSumary', 'resumeSumaryContent', 'resumeEducation', 'resumeFirstPro', 'resumeFirstJob', 'resumeSecondPro', 'resumeSecondJob', 'strongTitle', 'strongCard', 'portfolioTitle', 'portfolioGallery', 'contactTitle', 'contactSocial','contactSocialLink', 'contactEmail', 'contactEmailLink', 'contactCall', 'contactCallLink', 'footerTitle', 'footerLink', 'footerCopyright'));
+        return view('backoffice/pages/home');
     }
 }

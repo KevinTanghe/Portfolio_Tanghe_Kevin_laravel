@@ -14,13 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($navbar as $item)
+                @foreach ($hero as $item)
                     <tr>
                         <th scope="row">{{ $item->id }}</th>
-                        <td>{{ $item->chemin }}</td>
                         <td>{{ $item->titre }}</td>
-                        <td><a class="btn btn-success" href="/edit-navbar/{{$item->id}}">Edit</a></td>
-                        <td><a class="btn btn-danger" href="/delete-navbar/{{$item->id}}">Delete</a></td>
+                        <td>{{ $item->sousTitre }}</td>
+                        <td><a class="btn btn-success" href="/edit-hero/{{$item->id}}">Edit</a></td>
+                        <td><a class="btn btn-danger" href="/delete-hero/{{$item->id}}">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -34,15 +34,15 @@
                 </ul>
             </div>
         @endif
-        <form action="/store-navbar" method="POST">
+        <form action="/store-hero" method="POST">
             @csrf
-            <div class="form-group">
-                <label for="exampleInputEmail1">Chemin</label>
-                <input type="text" name="chemin" value="{{old('chemin')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Titre</label>
                 <input type="text" name="titre" value="{{old('titre')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Sous Titre</label>
+                <input type="text" name="sousTitre" value="{{old('sousTitre')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
