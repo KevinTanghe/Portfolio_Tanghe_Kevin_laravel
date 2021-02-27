@@ -14,7 +14,9 @@ class StrongTitleController extends Controller
      */
     public function index()
     {
-        //
+        $strongTitle = StrongTitle::all();
+
+        return view('backoffice/pages/strongTitle', compact('strongTitle'));
     }
 
     /**
@@ -35,7 +37,18 @@ class StrongTitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitle' => 'required',
+            'title' => 'required',
+            'sousTitle' => 'required'
+        ]);
+
+        $store = new StrongTitle;
+        $store->ombreTitle = $request->ombreTitle;
+        $store->title = $request->title;
+        $store->sousTitle = $request->sousTitle;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class StrongTitleController extends Controller
      * @param  \App\Models\StrongTitle  $strongTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(StrongTitle $strongTitle)
+    public function edit($id)
     {
-        //
+        $edit = StrongTitle::find($id);
+
+        return view('backoffice/edit/strongTitleEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class StrongTitleController extends Controller
      * @param  \App\Models\StrongTitle  $strongTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StrongTitle $strongTitle)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitle' => 'required',
+            'title' => 'required',
+            'sousTitle' => 'required'
+        ]);
+
+        $update = StrongTitle::find($id);
+        $update->ombreTitle = $request->ombreTitle;
+        $update->title = $request->title;
+        $update->sousTitle = $request->sousTitle;
+        $update->save();
+        return redirect('/back-strongTitle');
     }
 
     /**
@@ -78,8 +104,10 @@ class StrongTitleController extends Controller
      * @param  \App\Models\StrongTitle  $strongTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StrongTitle $strongTitle)
+    public function destroy($id)
     {
-        //
+        $destroy = StrongTitle::find($id);
+        $destroy->delete();
+        return redirect('/back-strongTitle');
     }
 }

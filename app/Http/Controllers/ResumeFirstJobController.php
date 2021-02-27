@@ -14,7 +14,9 @@ class ResumeFirstJobController extends Controller
      */
     public function index()
     {
-        //
+        $firstJob = ResumeFirstJob::all();
+
+        return view('backoffice/pages/resumeFirstJob', compact('firstJob'));
     }
 
     /**
@@ -35,7 +37,14 @@ class ResumeFirstJobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $store = new ResumeFirstJob;
+        $store->content = $request->content;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +64,11 @@ class ResumeFirstJobController extends Controller
      * @param  \App\Models\ResumeFirstJob  $resumeFirstJob
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResumeFirstJob $resumeFirstJob)
+    public function edit($id)
     {
-        //
+        $edit = ResumeFirstJob::find($id);
+
+        return view('backoffice/edit/resumeFirstJobEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +78,16 @@ class ResumeFirstJobController extends Controller
      * @param  \App\Models\ResumeFirstJob  $resumeFirstJob
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResumeFirstJob $resumeFirstJob)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $update = ResumeFirstJob::find($id);
+        $update->content = $request->content;
+        $update->save();
+        return redirect('/back-resumeFirstJob');
     }
 
     /**
@@ -78,8 +96,10 @@ class ResumeFirstJobController extends Controller
      * @param  \App\Models\ResumeFirstJob  $resumeFirstJob
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResumeFirstJob $resumeFirstJob)
+    public function destroy($id)
     {
-        //
+        $destroy = ResumeFirstJob::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeFirstJob');
     }
 }

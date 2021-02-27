@@ -14,7 +14,9 @@ class ResumeSecondJobController extends Controller
      */
     public function index()
     {
-        //
+        $secondJob = resumeSecondJob::all();
+
+        return view('backoffice/pages/resumeSecondJob', compact('secondJob'));
     }
 
     /**
@@ -35,7 +37,14 @@ class ResumeSecondJobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $store = new resumeSecondJob;
+        $store->content = $request->content;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +64,11 @@ class ResumeSecondJobController extends Controller
      * @param  \App\Models\resumeSecondJob  $resumeSecondJob
      * @return \Illuminate\Http\Response
      */
-    public function edit(resumeSecondJob $resumeSecondJob)
+    public function edit($id)
     {
-        //
+        $edit = resumeSecondJob::find($id);
+
+        return view('backoffice/edit/resumeSecondJobEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +78,16 @@ class ResumeSecondJobController extends Controller
      * @param  \App\Models\resumeSecondJob  $resumeSecondJob
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, resumeSecondJob $resumeSecondJob)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $update = resumeSecondJob::find($id);
+        $update->content = $request->content;
+        $update->save();
+        return redirect('/back-resumeSecondJob');
     }
 
     /**
@@ -78,8 +96,10 @@ class ResumeSecondJobController extends Controller
      * @param  \App\Models\resumeSecondJob  $resumeSecondJob
      * @return \Illuminate\Http\Response
      */
-    public function destroy(resumeSecondJob $resumeSecondJob)
+    public function destroy($id)
     {
-        //
+        $destroy = resumeSecondJob::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeSecondJob');
     }
 }

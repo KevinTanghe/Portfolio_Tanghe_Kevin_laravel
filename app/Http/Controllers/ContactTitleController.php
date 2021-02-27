@@ -14,7 +14,9 @@ class ContactTitleController extends Controller
      */
     public function index()
     {
-        //
+        $contactTitle = ContactTitle::all();
+
+        return view('backoffice/pages/contactTitle', compact('contactTitle'));
     }
 
     /**
@@ -35,7 +37,18 @@ class ContactTitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitle' => 'required',
+            'title' => 'required',
+            'sousTitle' => 'required'
+        ]);
+
+        $store = new ContactTitle;
+        $store->ombreTitle = $request->ombreTitle;
+        $store->title = $request->title;
+        $store->sousTitle = $request->sousTitle;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class ContactTitleController extends Controller
      * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactTitle $contactTitle)
+    public function edit($id)
     {
-        //
+        $edit = ContactTitle::find($id);
+
+        return view('backoffice/edit/contactTitleEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class ContactTitleController extends Controller
      * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactTitle $contactTitle)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitle' => 'required',
+            'title' => 'required',
+            'sousTitle' => 'required'
+        ]);
+
+        $update = ContactTitle::find($id);
+        $update->ombreTitle = $request->ombreTitle;
+        $update->title = $request->title;
+        $update->sousTitle = $request->sousTitle;
+        $update->save();
+        return redirect('/back-contactTitle');
     }
 
     /**
@@ -78,8 +104,10 @@ class ContactTitleController extends Controller
      * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactTitle $contactTitle)
+    public function destroy($id)
     {
-        //
+        $destroy = ContactTitle::find($id);
+        $destroy->delete();
+        return redirect('/back-contactTitle');
     }
 }

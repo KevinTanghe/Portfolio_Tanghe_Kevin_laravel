@@ -14,7 +14,9 @@ class ResumeTitleController extends Controller
      */
     public function index()
     {
-        //
+        $resumeTitle = ResumeTitle::all();
+
+        return view('backoffice/pages/resumeTitle', compact('resumeTitle'));
     }
 
     /**
@@ -35,7 +37,18 @@ class ResumeTitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitre' => 'required',
+            'titre' => 'required',
+            'sousTitre' => 'required'
+        ]);
+
+        $store = new ResumeTitle;
+        $store->ombreTitre = $request->ombreTitre;
+        $store->titre = $request->titre;
+        $store->sousTitre = $request->sousTitre;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class ResumeTitleController extends Controller
      * @param  \App\Models\ResumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResumeTitle $resumeTitle)
+    public function edit($id)
     {
-        //
+        $edit = ResumeTitle::find($id);
+
+        return view('backoffice/edit/resumeTitleEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class ResumeTitleController extends Controller
      * @param  \App\Models\ResumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResumeTitle $resumeTitle)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitre' => 'required',
+            'titre' => 'required',
+            'sousTitre' => 'required'
+        ]);
+
+        $update = ResumeTitle::find($id);
+        $update->ombreTitre = $request->ombreTitre;
+        $update->titre = $request->titre;
+        $update->sousTitre = $request->sousTitre;
+        $update->save();
+        return redirect('/back-resumeTitle');
     }
 
     /**
@@ -78,8 +104,10 @@ class ResumeTitleController extends Controller
      * @param  \App\Models\ResumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResumeTitle $resumeTitle)
+    public function destroy($id)
     {
-        //
+        $destroy = ResumeTitle::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeTitle');
     }
 }

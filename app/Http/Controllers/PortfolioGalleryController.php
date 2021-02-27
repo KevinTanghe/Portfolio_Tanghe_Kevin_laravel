@@ -14,7 +14,9 @@ class PortfolioGalleryController extends Controller
      */
     public function index()
     {
-        //
+        $portfolioGallery = PortfolioGallery::all();
+
+        return view('backoffice/pages/portfolioGallery', compact('portfolioGallery'));
     }
 
     /**
@@ -35,7 +37,16 @@ class PortfolioGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'img' => 'required',
+            'title' => 'required'
+        ]);
+
+        $store = new PortfolioGallery;
+        $store->img = $request->img;
+        $store->title = $request->title;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +66,11 @@ class PortfolioGalleryController extends Controller
      * @param  \App\Models\PortfolioGallery  $portfolioGallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(PortfolioGallery $portfolioGallery)
+    public function edit($id)
     {
-        //
+        $edit = PortfolioGallery::find($id);
+
+        return view('backoffice/edit/portfolioGalleryEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class PortfolioGalleryController extends Controller
      * @param  \App\Models\PortfolioGallery  $portfolioGallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PortfolioGallery $portfolioGallery)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'img' => 'required',
+            'title' => 'required'
+        ]);
+
+        $update = PortfolioGallery::find($id);
+        $update->img = $request->img;
+        $update->title = $request->title;
+        $update->save();
+        return redirect('/back-portfolioGallery');
     }
 
     /**
@@ -78,8 +100,10 @@ class PortfolioGalleryController extends Controller
      * @param  \App\Models\PortfolioGallery  $portfolioGallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PortfolioGallery $portfolioGallery)
+    public function destroy($id)
     {
-        //
+        $destroy = PortfolioGallery::find($id);
+        $destroy->delete();
+        return redirect('/back-portfolioGallery');
     }
 }

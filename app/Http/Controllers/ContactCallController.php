@@ -14,7 +14,9 @@ class ContactCallController extends Controller
      */
     public function index()
     {
-        //
+        $contactCall = ContactCall::all();
+
+        return view('backoffice/pages/contactCall', compact('contactCall'));
     }
 
     /**
@@ -35,7 +37,16 @@ class ContactCallController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'title' => 'required'
+        ]);
+
+        $store = new ContactCall;
+        $store->icon = $request->icon;
+        $store->title = $request->title;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +66,11 @@ class ContactCallController extends Controller
      * @param  \App\Models\ContactCall  $contactCall
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactCall $contactCall)
+    public function edit($id)
     {
-        //
+        $edit = ContactCall::find($id);
+
+        return view('backoffice/edit/contactCallEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class ContactCallController extends Controller
      * @param  \App\Models\ContactCall  $contactCall
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactCall $contactCall)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'title' => 'required'
+        ]);
+
+        $update = ContactCall::find($id);
+        $update->icon = $request->icon;
+        $update->title = $request->title;
+        $update->save();
+        return redirect('/back-contactCall');
     }
 
     /**
@@ -78,8 +100,10 @@ class ContactCallController extends Controller
      * @param  \App\Models\ContactCall  $contactCall
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactCall $contactCall)
+    public function destroy($id)
     {
-        //
+        $destroy = ContactCall::find($id);
+        $destroy->delete();
+        return redirect('/back-contactCall');
     }
 }

@@ -14,7 +14,9 @@ class ResumeSecondProController extends Controller
      */
     public function index()
     {
-        //
+        $secondPro = resumeSecondPro::all();
+
+        return view('backoffice/pages/resumeSecondPro', compact('secondPro'));
     }
 
     /**
@@ -35,7 +37,18 @@ class ResumeSecondProController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'title' => 'required',
+            'years' => 'required',
+            'lieu' => 'required'
+        ]);
+
+        $store = new resumeSecondPro;
+        $store->title = $request->title;
+        $store->years = $request->years;
+        $store->lieu = $request->lieu;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class ResumeSecondProController extends Controller
      * @param  \App\Models\resumeSecondPro  $resumeSecondPro
      * @return \Illuminate\Http\Response
      */
-    public function edit(resumeSecondPro $resumeSecondPro)
+    public function edit($id)
     {
-        //
+        $edit = resumeSecondPro::find($id);
+
+        return view('backoffice/edit/resumeSecondProEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class ResumeSecondProController extends Controller
      * @param  \App\Models\resumeSecondPro  $resumeSecondPro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, resumeSecondPro $resumeSecondPro)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'title' => 'required',
+            'years' => 'required',
+            'lieu' => 'required'
+        ]);
+
+        $update = resumeSecondPro::find($id);
+        $update->title = $request->title;
+        $update->years = $request->years;
+        $update->lieu = $request->lieu;
+        $update->save();
+        return redirect('/back-resumeSecondPro');
     }
 
     /**
@@ -78,8 +104,10 @@ class ResumeSecondProController extends Controller
      * @param  \App\Models\resumeSecondPro  $resumeSecondPro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(resumeSecondPro $resumeSecondPro)
+    public function destroy($id)
     {
-        //
+        $destroy = resumeSecondPro::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeSecondPro');
     }
 }

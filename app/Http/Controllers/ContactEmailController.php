@@ -14,7 +14,9 @@ class ContactEmailController extends Controller
      */
     public function index()
     {
-        //
+        $contactEmail = ContactEmail::all();
+
+        return view('backoffice/pages/contactEmail', compact('contactEmail'));
     }
 
     /**
@@ -35,7 +37,16 @@ class ContactEmailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'title' => 'required'
+        ]);
+
+        $store = new ContactEmail;
+        $store->icon = $request->icon;
+        $store->title = $request->title;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +66,11 @@ class ContactEmailController extends Controller
      * @param  \App\Models\ContactEmail  $contactEmail
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactEmail $contactEmail)
+    public function edit($id)
     {
-        //
+        $edit = ContactEmail::find($id);
+
+        return view('backoffice/edit/contactEmailEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class ContactEmailController extends Controller
      * @param  \App\Models\ContactEmail  $contactEmail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactEmail $contactEmail)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'title' => 'required'
+        ]);
+
+        $update = ContactEmail::find($id);
+        $update->icon = $request->icon;
+        $update->title = $request->title;
+        $update->save();
+        return redirect('/back-contactEmail');
     }
 
     /**
@@ -78,8 +100,10 @@ class ContactEmailController extends Controller
      * @param  \App\Models\ContactEmail  $contactEmail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactEmail $contactEmail)
+    public function destroy($id)
     {
-        //
+        $destroy = ContactEmail::find($id);
+        $destroy->delete();
+        return redirect('/back-contactEmail');
     }
 }

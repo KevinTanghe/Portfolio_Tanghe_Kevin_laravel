@@ -14,7 +14,9 @@ class AboutProgressController extends Controller
      */
     public function index()
     {
-        //
+        $aboutProgress = AboutProgress::all();
+
+        return view('backoffice/pages/aboutProgress', compact('aboutProgress'));
     }
 
     /**
@@ -35,7 +37,16 @@ class AboutProgressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'language' => 'required',
+            'pourcentage' => 'required'
+        ]);
+
+        $store = new AboutProgress;
+        $store->language = $request->language;
+        $store->pourcentage = $request->pourcentage;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -46,7 +57,7 @@ class AboutProgressController extends Controller
      */
     public function show(AboutProgress $aboutProgress)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +66,11 @@ class AboutProgressController extends Controller
      * @param  \App\Models\AboutProgress  $aboutProgress
      * @return \Illuminate\Http\Response
      */
-    public function edit(AboutProgress $aboutProgress)
+    public function edit($id)
     {
-        //
+        $edit = AboutProgress::find($id);
+
+        return view('backoffice/edit/aboutProgressEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class AboutProgressController extends Controller
      * @param  \App\Models\AboutProgress  $aboutProgress
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AboutProgress $aboutProgress)
+    public function update(Request $request,$id)
     {
-        //
+        $validation = $request->validate([
+            'language' => 'required',
+            'pourcentage' => 'required'
+        ]);
+
+        $update = AboutProgress::find($id);
+        $update->language = $request->language;
+        $update->pourcentage = $request->pourcentage;
+        $update->save();
+        return redirect('/back-aboutProgress');
     }
 
     /**
@@ -78,8 +100,10 @@ class AboutProgressController extends Controller
      * @param  \App\Models\AboutProgress  $aboutProgress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AboutProgress $aboutProgress)
+    public function destroy($id)
     {
-        //
+        $destroy = AboutProgress::find($id);
+        $destroy->delete();
+        return redirect('/back-aboutProgress');
     }
 }

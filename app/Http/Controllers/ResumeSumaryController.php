@@ -14,7 +14,9 @@ class ResumeSumaryController extends Controller
      */
     public function index()
     {
-        //
+        $resumeSumary = ResumeSumary::all();
+
+        return view('backoffice/pages/resumeSumary', compact('resumeSumary'));
     }
 
     /**
@@ -35,7 +37,18 @@ class ResumeSumaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'mainTitre' => 'required',
+            'titre' => 'required',
+            'description' => 'required'
+        ]);
+
+        $store = new ResumeSumary;
+        $store->mainTitre = $request->mainTitre;
+        $store->titre = $request->titre;
+        $store->description = $request->description;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class ResumeSumaryController extends Controller
      * @param  \App\Models\ResumeSumary  $resumeSumary
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResumeSumary $resumeSumary)
+    public function edit($id)
     {
-        //
+        $edit = ResumeSumary::find($id);
+
+        return view('backoffice/edit/resumeSumaryEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class ResumeSumaryController extends Controller
      * @param  \App\Models\ResumeSumary  $resumeSumary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResumeSumary $resumeSumary)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'mainTitre' => 'required',
+            'titre' => 'required',
+            'description' => 'required'
+        ]);
+
+        $update = ResumeSumary::find($id);
+        $update->mainTitre = $request->mainTitre;
+        $update->titre = $request->titre;
+        $update->description = $request->description;
+        $update->save();
+        return redirect('/back-resumeSumary');
     }
 
     /**
@@ -78,8 +104,10 @@ class ResumeSumaryController extends Controller
      * @param  \App\Models\ResumeSumary  $resumeSumary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResumeSumary $resumeSumary)
+    public function destroy($id)
     {
-        //
+        $destroy = ResumeSumary::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeSumary');
     }
 }

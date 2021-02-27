@@ -14,7 +14,9 @@ class PortfolioTitleController extends Controller
      */
     public function index()
     {
-        //
+        $folioTitle = PortfolioTitle::all();
+
+        return view('backoffice/pages/portfolioTitle', compact('folioTitle'));
     }
 
     /**
@@ -35,7 +37,18 @@ class PortfolioTitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitle' => 'required',
+            'title' => 'required',
+            'sousTitle' => 'required'
+        ]);
+
+        $store = new PortfolioTitle;
+        $store->ombreTitle = $request->ombreTitle;
+        $store->title = $request->title;
+        $store->sousTitle = $request->sousTitle;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class PortfolioTitleController extends Controller
      * @param  \App\Models\PortfolioTitle  $portfolioTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(PortfolioTitle $portfolioTitle)
+    public function edit($id)
     {
-        //
+        $edit = PortfolioTitle::find($id);
+
+        return view('backoffice/edit/portfolioTitleEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class PortfolioTitleController extends Controller
      * @param  \App\Models\PortfolioTitle  $portfolioTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PortfolioTitle $portfolioTitle)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'ombreTitle' => 'required',
+            'title' => 'required',
+            'sousTitle' => 'required'
+        ]);
+
+        $update = PortfolioTitle::find($id);
+        $update->ombreTitle = $request->ombreTitle;
+        $update->title = $request->title;
+        $update->sousTitle = $request->sousTitle;
+        $update->save();
+        return redirect('/back-portfolioTitle');
     }
 
     /**
@@ -78,8 +104,10 @@ class PortfolioTitleController extends Controller
      * @param  \App\Models\PortfolioTitle  $portfolioTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PortfolioTitle $portfolioTitle)
+    public function destroy($id)
     {
-        //
+        $destroy = PortfolioTitle::find($id);
+        $destroy->delete();
+        return redirect('/back-portfolioTitle');
     }
 }

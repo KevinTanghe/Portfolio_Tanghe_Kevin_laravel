@@ -14,7 +14,9 @@ class ContactSocialController extends Controller
      */
     public function index()
     {
-        //
+        $contactSocial = ContactSocial::all();
+
+        return view('backoffice/pages/contactSocial', compact('contactSocial'));
     }
 
     /**
@@ -35,7 +37,16 @@ class ContactSocialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'title' => 'required'
+        ]);
+
+        $store = new ContactSocial;
+        $store->icon = $request->icon;
+        $store->title = $request->title;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +66,11 @@ class ContactSocialController extends Controller
      * @param  \App\Models\ContactSocial  $contactSocial
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactSocial $contactSocial)
+    public function edit($id)
     {
-        //
+        $edit = ContactSocial::find($id);
+
+        return view('backoffice/edit/contactSocialEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +80,18 @@ class ContactSocialController extends Controller
      * @param  \App\Models\ContactSocial  $contactSocial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactSocial $contactSocial)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'icon' => 'required',
+            'title' => 'required'
+        ]);
+
+        $update = ContactSocial::find($id);
+        $update->icon = $request->icon;
+        $update->title = $request->title;
+        $update->save();
+        return redirect('/back-contactSocial');
     }
 
     /**
@@ -78,8 +100,10 @@ class ContactSocialController extends Controller
      * @param  \App\Models\ContactSocial  $contactSocial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactSocial $contactSocial)
+    public function destroy($id)
     {
-        //
+        $destroy = ContactSocial::find($id);
+        $destroy->delete();
+        return redirect('/back-contactSocial');
     }
 }

@@ -14,7 +14,9 @@ class ContactCallLinkController extends Controller
      */
     public function index()
     {
-        //
+        $contactCallLink = ContactCallLink::all();
+
+        return view('backoffice/pages/contactCallLink', compact('contactCallLink'));
     }
 
     /**
@@ -35,7 +37,14 @@ class ContactCallLinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'phone' => 'required'
+        ]);
+
+        $store = new ContactCallLink;
+        $store->phone = $request->phone;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +64,11 @@ class ContactCallLinkController extends Controller
      * @param  \App\Models\ContactCallLink  $contactCallLink
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactCallLink $contactCallLink)
+    public function edit($id)
     {
-        //
+        $edit = ContactCallLink::find($id);
+
+        return view('backoffice/edit/contactCallLinkEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +78,16 @@ class ContactCallLinkController extends Controller
      * @param  \App\Models\ContactCallLink  $contactCallLink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactCallLink $contactCallLink)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'phone' => 'required'
+        ]);
+
+        $update = ContactCallLink::find($id);
+        $update->phone = $request->phone;
+        $update->save();
+        return redirect('/back-contactCallLink');
     }
 
     /**
@@ -78,8 +96,10 @@ class ContactCallLinkController extends Controller
      * @param  \App\Models\ContactCallLink  $contactCallLink
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactCallLink $contactCallLink)
+    public function destroy($id)
     {
-        //
+        $destroy = ContactCallLink::find($id);
+        $destroy->delete();
+        return redirect('/back-contactCallLink');
     }
 }

@@ -14,7 +14,9 @@ class ContactEmailLinkController extends Controller
      */
     public function index()
     {
-        //
+        $contactEmailLink = ContactEmailLink::all();
+
+        return view('backoffice/pages/contactEmailLink', compact('contactEmailLink'));
     }
 
     /**
@@ -35,7 +37,14 @@ class ContactEmailLinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'mail' => 'required'
+        ]);
+
+        $store = new ContactEmailLink;
+        $store->mail = $request->mail;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +64,11 @@ class ContactEmailLinkController extends Controller
      * @param  \App\Models\ContactEmailLink  $contactEmailLink
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactEmailLink $contactEmailLink)
+    public function edit($id)
     {
-        //
+        $edit = ContactEmailLink::find($id);
+
+        return view('backoffice/edit/contactEmailLinkEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +78,16 @@ class ContactEmailLinkController extends Controller
      * @param  \App\Models\ContactEmailLink  $contactEmailLink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactEmailLink $contactEmailLink)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'mail' => 'required'
+        ]);
+
+        $update = ContactEmailLink::find($id);
+        $update->mail = $request->mail;
+        $update->save();
+        return redirect('/back-contactEmailLink');
     }
 
     /**
@@ -78,8 +96,10 @@ class ContactEmailLinkController extends Controller
      * @param  \App\Models\ContactEmailLink  $contactEmailLink
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactEmailLink $contactEmailLink)
+    public function destroy($id)
     {
-        //
+        $destroy = ContactEmailLink::find($id);
+        $destroy->delete();
+        return redirect('/back-contactEmailLink');
     }
 }

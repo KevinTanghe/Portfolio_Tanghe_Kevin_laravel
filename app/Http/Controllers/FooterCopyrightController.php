@@ -14,7 +14,9 @@ class FooterCopyrightController extends Controller
      */
     public function index()
     {
-        //
+        $footerCopyright = FooterCopyright::all();
+
+        return view('backoffice/pages/footerCopyright', compact('footerCopyright'));
     }
 
     /**
@@ -35,7 +37,18 @@ class FooterCopyrightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'copyright' => 'required',
+            'name' => 'required',
+            'droit' => 'required'
+        ]);
+
+        $store = new FooterCopyright;
+        $store->copyright = $request->copyright;
+        $store->name = $request->name;
+        $store->droit = $request->droit;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class FooterCopyrightController extends Controller
      * @param  \App\Models\FooterCopyright  $footerCopyright
      * @return \Illuminate\Http\Response
      */
-    public function edit(FooterCopyright $footerCopyright)
+    public function edit($id)
     {
-        //
+        $edit = FooterCopyright::find($id);
+
+        return view('backoffice/edit/footerCopyrightEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class FooterCopyrightController extends Controller
      * @param  \App\Models\FooterCopyright  $footerCopyright
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FooterCopyright $footerCopyright)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'copyright' => 'required',
+            'name' => 'required',
+            'droit' => 'required'
+        ]);
+
+        $update = FooterCopyright::find($id);
+        $update->copyright = $request->copyright;
+        $update->name = $request->name;
+        $update->droit = $request->droit;
+        $update->save();
+        return redirect('/back-footerCopyright');
     }
 
     /**
@@ -78,8 +104,10 @@ class FooterCopyrightController extends Controller
      * @param  \App\Models\FooterCopyright  $footerCopyright
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FooterCopyright $footerCopyright)
+    public function destroy($id)
     {
-        //
+        $destroy = FooterCopyright::find($id);
+        $destroy->delete();
+        return redirect('/back-footerCopyright');
     }
 }

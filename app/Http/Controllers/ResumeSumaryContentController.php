@@ -14,7 +14,9 @@ class ResumeSumaryContentController extends Controller
      */
     public function index()
     {
-        //
+        $resumeSumaryContent = ResumeSumaryContent::all();
+
+        return view('backoffice/pages/resumeSumaryContent', compact('resumeSumaryContent'));
     }
 
     /**
@@ -35,7 +37,14 @@ class ResumeSumaryContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $store = new ResumeSumaryContent;
+        $store->content = $request->content;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +64,11 @@ class ResumeSumaryContentController extends Controller
      * @param  \App\Models\ResumeSumaryContent  $resumeSumaryContent
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResumeSumaryContent $resumeSumaryContent)
+    public function edit($id)
     {
-        //
+        $edit = ResumeSumaryContent::find($id);
+
+        return view('backoffice/edit/resumeSumaryContentEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +78,16 @@ class ResumeSumaryContentController extends Controller
      * @param  \App\Models\ResumeSumaryContent  $resumeSumaryContent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResumeSumaryContent $resumeSumaryContent)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $update = ResumeSumaryContent::find($id);
+        $update->content = $request->content;
+        $update->save();
+        return redirect('/back-resumeSumaryContent');
     }
 
     /**
@@ -78,8 +96,10 @@ class ResumeSumaryContentController extends Controller
      * @param  \App\Models\ResumeSumaryContent  $resumeSumaryContent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResumeSumaryContent $resumeSumaryContent)
+    public function destroy($id)
     {
-        //
+        $destroy = ResumeSumaryContent::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeSumaryContent');
     }
 }

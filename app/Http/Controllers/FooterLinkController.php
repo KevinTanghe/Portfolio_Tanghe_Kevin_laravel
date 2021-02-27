@@ -14,9 +14,11 @@ class FooterLinkController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $footerLink = FooterLink::all();
 
+        return view('backoffice/pages/footerLink', compact('footerLink'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,18 @@ class FooterLinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'lien' => 'required',
+            'name' => 'required',
+            'icon' => 'required'
+        ]);
+
+        $store = new FooterLink;
+        $store->lien = $request->lien;
+        $store->name = $request->name;
+        $store->icon = $request->icon;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +68,11 @@ class FooterLinkController extends Controller
      * @param  \App\Models\FooterLink  $footerLink
      * @return \Illuminate\Http\Response
      */
-    public function edit(FooterLink $footerLink)
+    public function edit($id)
     {
-        //
+        $edit = FooterLink::find($id);
+
+        return view('backoffice/edit/footerLinkEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +82,20 @@ class FooterLinkController extends Controller
      * @param  \App\Models\FooterLink  $footerLink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FooterLink $footerLink)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'lien' => 'required',
+            'name' => 'required',
+            'icon' => 'required'
+        ]);
+
+        $update = FooterLink::find($id);
+        $update->lien = $request->lien;
+        $update->name = $request->name;
+        $update->icon = $request->icon;
+        $update->save();
+        return redirect('/back-footerLink');
     }
 
     /**
@@ -78,8 +104,10 @@ class FooterLinkController extends Controller
      * @param  \App\Models\FooterLink  $footerLink
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FooterLink $footerLink)
+    public function destroy($id)
     {
-        //
+        $destroy = FooterLink::find($id);
+        $destroy->delete();
+        return redirect('/back-footerLink');
     }
 }

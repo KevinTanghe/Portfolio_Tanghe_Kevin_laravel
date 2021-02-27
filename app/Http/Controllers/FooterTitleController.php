@@ -14,7 +14,9 @@ class FooterTitleController extends Controller
      */
     public function index()
     {
-        //
+        $footerTitle = FooterTitle::all();
+
+        return view('backoffice/pages/footerTitle', compact('footerTitle'));
     }
 
     /**
@@ -35,7 +37,14 @@ class FooterTitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'title' => 'required'
+        ]);
+
+        $store = new FooterTitle;
+        $store->title = $request->title;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +64,11 @@ class FooterTitleController extends Controller
      * @param  \App\Models\FooterTitle  $footerTitle
      * @return \Illuminate\Http\Response
      */
-    public function edit(FooterTitle $footerTitle)
+    public function edit($id)
     {
-        //
+        $edit = FooterTitle::find($id);
+
+        return view('backoffice/edit/footerTitleEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +78,16 @@ class FooterTitleController extends Controller
      * @param  \App\Models\FooterTitle  $footerTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FooterTitle $footerTitle)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'title' => 'required'
+        ]);
+
+        $update = FooterTitle::find($id);
+        $update->title = $request->title;
+        $update->save();
+        return redirect('/back-footerTitle');
     }
 
     /**
@@ -78,8 +96,10 @@ class FooterTitleController extends Controller
      * @param  \App\Models\FooterTitle  $footerTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FooterTitle $footerTitle)
+    public function destroy($id)
     {
-        //
+        $destroy = FooterTitle::find($id);
+        $destroy->delete();
+        return redirect('/back-footerTitle');
     }
 }

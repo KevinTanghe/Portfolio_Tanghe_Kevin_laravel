@@ -14,7 +14,9 @@ class ResumeFirstProController extends Controller
      */
     public function index()
     {
-        //
+        $firstPro = ResumeFirstPro::all();
+
+        return view('backoffice/pages/resumeFirstPro', compact('firstPro'));
     }
 
     /**
@@ -35,7 +37,20 @@ class ResumeFirstProController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'mainTitle' => 'required',
+            'title' => 'required',
+            'years' => 'required',
+            'lieu' => 'required'
+        ]);
+
+        $store = new ResumeFirstPro;
+        $store->mainTitle = $request->mainTitle;
+        $store->title = $request->title;
+        $store->years = $request->years;
+        $store->lieu = $request->lieu;
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +70,11 @@ class ResumeFirstProController extends Controller
      * @param  \App\Models\ResumeFirstPro  $resumeFirstPro
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResumeFirstPro $resumeFirstPro)
+    public function edit($id)
     {
-        //
+        $edit = ResumeFirstPro::find($id);
+
+        return view('backoffice/edit/resumeFirstProEdit', compact('edit'));
     }
 
     /**
@@ -67,9 +84,22 @@ class ResumeFirstProController extends Controller
      * @param  \App\Models\ResumeFirstPro  $resumeFirstPro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResumeFirstPro $resumeFirstPro)
+    public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'mainTitle' => 'required',
+            'title' => 'required',
+            'years' => 'required',
+            'lieu' => 'required'
+        ]);
+
+        $update = ResumeFirstPro::find($id);
+        $update->mainTitle = $request->mainTitle;
+        $update->title = $request->title;
+        $update->years = $request->years;
+        $update->lieu = $request->lieu;
+        $update->save();
+        return redirect('/back-resumeFirstPro');
     }
 
     /**
@@ -78,8 +108,10 @@ class ResumeFirstProController extends Controller
      * @param  \App\Models\ResumeFirstPro  $resumeFirstPro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResumeFirstPro $resumeFirstPro)
+    public function destroy($id)
     {
-        //
+        $destroy = ResumeFirstPro::find($id);
+        $destroy->delete();
+        return redirect('/back-resumeFirstPro');
     }
 }
