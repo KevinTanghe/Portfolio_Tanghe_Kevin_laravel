@@ -28,7 +28,7 @@ class StrongCardSeeder extends Seeder
             [
                 'icon' => 'bx bx-tachometer',
                 'title' => 'Productivity.',
-                'content' => "La productivité est importante, il faut suivre le rythme et gérer les deadlines pour le bien de l'entreprise."
+                'content' => "Productivity is important, you have to keep pace and manage deadlines for the good of the business."
             ],
             [
                 'icon' => 'bx bx-message-dots',
