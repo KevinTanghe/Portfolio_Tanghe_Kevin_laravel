@@ -15,13 +15,10 @@ use App\Models\FooterCopyright;
 use App\Models\FooterLink;
 use App\Models\Navbar;
 use App\Models\PortfolioGallery;
-use App\Models\ResumeEducation;
 use App\Models\ResumeFirstJob;
-use App\Models\ResumeFirstPro;
 use App\Models\resumeSecondJob;
-use App\Models\ResumeSecondPro;
-use App\Models\ResumeSumary;
 use App\Models\ResumeSumaryContent;
+use App\Models\resumeTitle;
 use App\Models\StrongCard;
 use App\Models\Title;
 use Illuminate\Http\Request;
@@ -36,12 +33,9 @@ class HomeController extends Controller
         $aboutProject = AboutProject::all();
         $aboutProgress = AboutProgress::all();
 
-        $resumeSumary = ResumeSumary::all();
+        $resumeTitle = resumeTitle::all();
         $resumeSumaryContent = ResumeSumaryContent::all();
-        $resumeEducation = ResumeEducation::all();
-        $resumeFirstPro = ResumeFirstPro::all();
         $resumeFirstJob = ResumeFirstJob::all();
-        $resumeSecondPro = ResumeSecondPro::all();
         $resumeSecondJob = resumeSecondJob::all();
 
         $strongCard = StrongCard::all();
@@ -60,7 +54,7 @@ class HomeController extends Controller
 
         $title = Title::all();
 
-        return view('pages/welcome', compact('navbar', 'aboutDescription', 'aboutProject', 'aboutProgress', 'resumeSumary', 'resumeSumaryContent', 'resumeEducation', 'resumeFirstPro', 'resumeFirstJob', 'resumeSecondPro', 'resumeSecondJob', 'strongCard', 'portfolioGallery', 'contactSocial','contactSocialLink', 'contactEmail', 'contactEmailLink', 'contactCall', 'contactCallLink', 'footerLink', 'footerCopyright', 'title'));
+        return view('pages/welcome', compact('navbar', 'aboutDescription', 'aboutProject', 'aboutProgress', 'resumeSumaryContent', 'resumeFirstJob', 'resumeSecondJob', 'strongCard', 'portfolioGallery', 'contactSocial','contactSocialLink', 'contactEmail', 'contactEmailLink', 'contactCall', 'contactCallLink', 'footerLink', 'footerCopyright', 'title', 'resumeTitle'));
     }
 
     public function back() {

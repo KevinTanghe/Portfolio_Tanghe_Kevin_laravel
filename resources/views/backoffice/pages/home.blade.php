@@ -30,28 +30,16 @@
                     <th><a class="btn btn-primary" href="/back-aboutProgress">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Resume Sumary</th>
-                    <th><a class="btn btn-primary" href="/back-resumeSumary">Show</a></th>
+                    <th scope="row">Resume Title</th>
+                    <th><a class="btn btn-primary" href="/back-resumeTitle">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Resume Sumary Content</th>
                     <th><a class="btn btn-primary" href="/back-resumeSumaryContent">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Resume Education</th>
-                    <th><a class="btn btn-primary" href="/back-resumeEducation">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">Resume First Pro</th>
-                    <th><a class="btn btn-primary" href="/back-resumeFirstPro">Show</a></th>
-                </tr>
-                <tr>
                     <th scope="row">Resume First Job</th>
                     <th><a class="btn btn-primary" href="/back-resumeFirstJob">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">Resume Second Pro</th>
-                    <th><a class="btn btn-primary" href="/back-resumeSecondPro">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Resume Second Job</th>

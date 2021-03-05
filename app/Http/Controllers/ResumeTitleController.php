@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\resumeSecondPro;
+use App\Models\resumeTitle;
 use Illuminate\Http\Request;
 
-class ResumeSecondProController extends Controller
+class ResumeTitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ResumeSecondProController extends Controller
      */
     public function index()
     {
-        $secondPro = resumeSecondPro::all();
+        $resumeTitle = resumeTitle::all();
 
-        return view('backoffice/pages/resumeSecondPro', compact('secondPro'));
+        return view('backoffice/pages/resumeTitle', compact('resumeTitle'));
     }
 
     /**
@@ -39,14 +39,15 @@ class ResumeSecondProController extends Controller
     {
         $validation = $request->validate([
             'title' => 'required',
-            'years' => 'required',
-            'lieu' => 'required'
+            'sousTitle' => 'required',
         ]);
 
-        $store = new resumeSecondPro;
+        $store = new resumeTitle;
+        $store->head = $request->head;
         $store->title = $request->title;
         $store->years = $request->years;
-        $store->lieu = $request->lieu;
+        $store->sousTitle = $request->sousTitle;
+        $store->content = $request->content;
         $store->save();
         return redirect()->back();
     }
@@ -54,10 +55,10 @@ class ResumeSecondProController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\resumeSecondPro  $resumeSecondPro
+     * @param  \App\Models\resumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
-    public function show(resumeSecondPro $resumeSecondPro)
+    public function show(resumeTitle $resumeTitle)
     {
         //
     }
@@ -65,49 +66,50 @@ class ResumeSecondProController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\resumeSecondPro  $resumeSecondPro
+     * @param  \App\Models\resumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $edit = resumeSecondPro::find($id);
+        $edit = resumeTitle::find($id);
 
-        return view('backoffice/edit/resumeSecondProEdit', compact('edit'));
+        return view('backoffice/edit/resumeTitleEdit', compact('edit'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\resumeSecondPro  $resumeSecondPro
+     * @param  \App\Models\resumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $validation = $request->validate([
             'title' => 'required',
-            'years' => 'required',
-            'lieu' => 'required'
+            'sousTitle' => 'required',
         ]);
 
-        $update = resumeSecondPro::find($id);
+        $update = resumeTitle::find($id);
+        $update->head = $request->head;
         $update->title = $request->title;
         $update->years = $request->years;
-        $update->lieu = $request->lieu;
+        $update->sousTitle = $request->sousTitle;
+        $update->content = $request->content;
         $update->save();
-        return redirect('/back-resumeSecondPro');
+        return redirect('/back-resumeTitle');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\resumeSecondPro  $resumeSecondPro
+     * @param  \App\Models\resumeTitle  $resumeTitle
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $destroy = resumeSecondPro::find($id);
+        $destroy = resumeTitle::find($id);
         $destroy->delete();
-        return redirect('/back-resumeSecondPro');
+        return redirect('/back-resumeTitle');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResumeSumariesTable extends Migration
+class CreateResumeTitlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateResumeSumariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resume_sumaries', function (Blueprint $table) {
+        Schema::create('resume_titles', function (Blueprint $table) {
             $table->id();
-            $table->string('mainTitre');
-            $table->string('titre');
-            $table->string('description');
+            $table->string('head')->nullable();
+            $table->string('title');
+            $table->string('years')->nullable();
+            $table->string('sousTitle');
+            $table->string('content')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateResumeSumariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resume_sumaries');
+        Schema::dropIfExists('resume_titles');
     }
 }

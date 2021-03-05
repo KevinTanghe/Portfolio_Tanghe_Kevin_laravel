@@ -3,32 +3,22 @@
 use App\Http\Controllers\AboutDescriptionController;
 use App\Http\Controllers\AboutProgressController;
 use App\Http\Controllers\AboutProjectController;
-use App\Http\Controllers\AboutTitleController;
 use App\Http\Controllers\ContactCallController;
 use App\Http\Controllers\ContactCallLinkController;
 use App\Http\Controllers\ContactEmailController;
 use App\Http\Controllers\ContactEmailLinkController;
 use App\Http\Controllers\ContactSocialController;
 use App\Http\Controllers\ContactSocialLinkController;
-use App\Http\Controllers\ContactTitleController;
 use App\Http\Controllers\FooterCopyrightController;
 use App\Http\Controllers\FooterLinkController;
-use App\Http\Controllers\FooterTitleController;
-use App\Http\Controllers\HeroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\PortfolioGalleryController;
-use App\Http\Controllers\PortfolioTitleController;
-use App\Http\Controllers\ResumeEducationController;
 use App\Http\Controllers\ResumeFirstJobController;
-use App\Http\Controllers\ResumeFirstProController;
 use App\Http\Controllers\ResumeSecondJobController;
-use App\Http\Controllers\ResumeSecondProController;
 use App\Http\Controllers\ResumeSumaryContentController;
-use App\Http\Controllers\ResumeSumaryController;
 use App\Http\Controllers\ResumeTitleController;
 use App\Http\Controllers\StrongCardController;
-use App\Http\Controllers\StrongTitleController;
 use App\Http\Controllers\TitleController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,15 +69,6 @@ Route::get('/edit-aboutProgress/{id}', [AboutProgressController::class, "edit"])
 Route::post('/update-aboutProgress/{id}', [AboutProgressController::class, 'update']);
 Route::get('/delete-aboutProgress/{id}', [AboutProgressController::class, 'destroy']);
 
-
-                        // Resume Sumary
-
-Route::get('back-resumeSumary', [ResumeSumaryController::class, 'index']);
-Route::post('store-resumeSumary', [ResumeSumaryController::class, 'store']);
-Route::get('/edit-resumeSumary/{id}', [ResumeSumaryController::class, "edit"]);
-Route::post('/update-resumeSumary/{id}', [ResumeSumaryController::class, 'update']);
-Route::get('/delete-resumeSumary/{id}', [ResumeSumaryController::class, 'destroy']);
-
                         // Resume Sumary Content
 
 Route::get('back-resumeSumaryContent', [ResumeSumaryContentController::class, 'index']);
@@ -96,22 +77,6 @@ Route::get('/edit-resumeSumaryContent/{id}', [ResumeSumaryContentController::cla
 Route::post('/update-resumeSumaryContent/{id}', [ResumeSumaryContentController::class, 'update']);
 Route::get('/delete-resumeSumaryContent/{id}', [ResumeSumaryContentController::class, 'destroy']);
 
-                        // Resume Education
-
-Route::get('back-resumeEducation', [ResumeEducationController::class, 'index']);
-Route::post('store-resumeEducation', [ResumeEducationController::class, 'store']);
-Route::get('/edit-resumeEducation/{id}', [ResumeEducationController::class, "edit"]);
-Route::post('/update-resumeEducation/{id}', [ResumeEducationController::class, 'update']);
-Route::get('/delete-resumeEducation/{id}', [ResumeEducationController::class, 'destroy']);
-
-                        // Resume First Pro
-
-Route::get('back-resumeFirstPro', [ResumeFirstProController::class, 'index']);
-Route::post('store-resumeFirstPro', [ResumeFirstProController::class, 'store']);
-Route::get('/edit-resumeFirstPro/{id}', [ResumeFirstProController::class, "edit"]);
-Route::post('/update-resumeFirstPro/{id}', [ResumeFirstProController::class, 'update']);
-Route::get('/delete-resumeFirstPro/{id}', [ResumeFirstProController::class, 'destroy']);
-
                         // Resume First Job
 
 Route::get('back-resumeFirstJob', [ResumeFirstJobController::class, 'index']);
@@ -119,14 +84,6 @@ Route::post('store-resumeFirstJob', [ResumeFirstJobController::class, 'store']);
 Route::get('/edit-resumeFirstJob/{id}', [ResumeFirstJobController::class, "edit"]);
 Route::post('/update-resumeFirstJob/{id}', [ResumeFirstJobController::class, 'update']);
 Route::get('/delete-resumeFirstJob/{id}', [ResumeFirstJobController::class, 'destroy']);
-
-                        // Resume Second Pro
-
-Route::get('back-resumeSecondPro', [ResumeSecondProController::class, 'index']);
-Route::post('store-resumeSecondPro', [ResumeSecondProController::class, 'store']);
-Route::get('/edit-resumeSecondPro/{id}', [ResumeSecondProController::class, "edit"]);
-Route::post('/update-resumeSecondPro/{id}', [ResumeSecondProController::class, 'update']);
-Route::get('/delete-resumeSecondPro/{id}', [ResumeSecondProController::class, 'destroy']);
 
                         // Resume Second Job
 
@@ -225,3 +182,10 @@ Route::post('/update-title/{id}', [TitleController::class, 'update']);
 Route::get('/delete-title/{id}', [TitleController::class, 'destroy']);
 
 
+                        // ResumeTitle
+
+Route::get('back-resumeTitle', [ResumeTitleController::class, 'index']);
+Route::post('store-resumeTitle', [ResumeTitleController::class, 'store']);
+Route::get('/edit-resumeTitle/{id}', [ResumeTitleController::class, "edit"]);
+Route::post('/update-resumeTitle/{id}', [ResumeTitleController::class, 'update']);
+Route::get('/delete-resumeTitle/{id}', [ResumeTitleController::class, 'destroy']);

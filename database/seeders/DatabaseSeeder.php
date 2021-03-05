@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             AboutProjectSeeder::class,
             AboutProgressSeeder::class,
 
+            ResumeTitleSeeder::class,
             ResumeSumarySeeder::class,
             ResumeSumaryContentSeeder::class,
             ResumeEducationSeeder::class,
