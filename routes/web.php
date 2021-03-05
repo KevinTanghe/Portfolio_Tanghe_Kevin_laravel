@@ -29,6 +29,7 @@ use App\Http\Controllers\ResumeSumaryController;
 use App\Http\Controllers\ResumeTitleController;
 use App\Http\Controllers\StrongCardController;
 use App\Http\Controllers\StrongTitleController;
+use App\Http\Controllers\TitleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,21 +54,6 @@ Route::get('/edit-navbar/{id}', [NavbarController::class, 'edit']);
 Route::post('/update-navbar/{id}', [NavbarController::class, 'update']);
 Route::get('/delete-navbar/{id}', [NavbarController::class, 'destroy']);
 
-                    // hero
-
-Route::get('back-hero', [HeroController::class, 'index']);
-Route::post('store-hero', [HeroController::class, 'store']);
-Route::get('/edit-hero/{id}', [HeroController::class, "edit"]);
-Route::post('/update-hero/{id}', [HeroController::class, 'update']);
-Route::get('/delete-hero/{id}', [HeroController::class, 'destroy']);
-
-                    // AboutTitle
-
-Route::get('/back-aboutTitle', [AboutTitleController::class, 'index']);
-Route::post('store-aboutTitle', [AboutTitleController::class, 'store']);
-Route::get('/edit-aboutTitle/{id}', [AboutTitleController::class, "edit"]);
-Route::post('/update-aboutTitle/{id}', [AboutTitleController::class, 'update']);
-Route::get('/delete-aboutTitle/{id}', [AboutTitleController::class, 'destroy']);
 
                     // About Description
 
@@ -93,13 +79,6 @@ Route::get('/edit-aboutProgress/{id}', [AboutProgressController::class, "edit"])
 Route::post('/update-aboutProgress/{id}', [AboutProgressController::class, 'update']);
 Route::get('/delete-aboutProgress/{id}', [AboutProgressController::class, 'destroy']);
 
-                        //Resuse Title
-
-Route::get('back-resumeTitle', [ResumeTitleController::class, 'index']);
-Route::post('store-resumeTitle', [ResumeTitleController::class, 'store']);
-Route::get('/edit-resumeTitle/{id}', [ResumeTitleController::class, "edit"]);
-Route::post('/update-resumeTitle/{id}', [ResumeTitleController::class, 'update']);
-Route::get('/delete-resumeTitle/{id}', [ResumeTitleController::class, 'destroy']);
 
                         // Resume Sumary
 
@@ -157,14 +136,6 @@ Route::get('/edit-resumeSecondJob/{id}', [ResumeSecondJobController::class, "edi
 Route::post('/update-resumeSecondJob/{id}', [ResumeSecondJobController::class, 'update']);
 Route::get('/delete-resumeSecondJob/{id}', [ResumeSecondJobController::class, 'destroy']);
 
-                        // Strong Title
-
-Route::get('back-strongTitle', [StrongTitleController::class, 'index']);
-Route::post('store-strongTitle', [StrongTitleController::class, 'store']);
-Route::get('/edit-strongTitle/{id}', [StrongTitleController::class, "edit"]);
-Route::post('/update-strongTitle/{id}', [StrongTitleController::class, 'update']);
-Route::get('/delete-strongTitle/{id}', [StrongTitleController::class, 'destroy']);
-
                         // Strong Card
 
 Route::get('back-strongCard', [StrongCardController::class, 'index']);
@@ -173,14 +144,6 @@ Route::get('/edit-strongCard/{id}', [StrongCardController::class, "edit"]);
 Route::post('/update-strongCard/{id}', [StrongCardController::class, 'update']);
 Route::get('/delete-strongCard/{id}', [StrongCardController::class, 'destroy']);
 
-                        // Portfolio Title
-
-Route::get('back-portfolioTitle', [PortfolioTitleController::class, 'index']);
-Route::post('store-portfolioTitle', [PortfolioTitleController::class, 'store']);
-Route::get('/edit-portfolioTitle/{id}', [PortfolioTitleController::class, "edit"]);
-Route::post('/update-portfolioTitle/{id}', [PortfolioTitleController::class, 'update']);
-Route::get('/delete-portfolioTitle/{id}', [PortfolioTitleController::class, 'destroy']);
-
                         // Portfolio Gallery
 
 Route::get('back-portfolioGallery', [PortfolioGalleryController::class, 'index']);
@@ -188,14 +151,6 @@ Route::post('store-portfolioGallery', [PortfolioGalleryController::class, 'store
 Route::get('/edit-portfolioGallery/{id}', [PortfolioGalleryController::class, "edit"]);
 Route::post('/update-portfolioGallery/{id}', [PortfolioGalleryController::class, 'update']);
 Route::get('/delete-portfolioGallery/{id}', [PortfolioGalleryController::class, 'destroy']);
-
-                        // Contact Title
-
-Route::get('back-contactTitle', [ContactTitleController::class, 'index']);
-Route::post('store-contactTitle', [ContactTitleController::class, 'store']);
-Route::get('/edit-contactTitle/{id}', [ContactTitleController::class, "edit"]);
-Route::post('/update-contactTitle/{id}', [ContactTitleController::class, 'update']);
-Route::get('/delete-contactTitle/{id}', [ContactTitleController::class, 'destroy']);
 
                         // Contact Social
 
@@ -245,14 +200,6 @@ Route::get('/edit-contactCallLink/{id}', [ContactCallLinkController::class, "edi
 Route::post('/update-contactCallLink/{id}', [ContactCallLinkController::class, 'update']);
 Route::get('/delete-contactCallLink/{id}', [ContactCallLinkController::class, 'destroy']);
 
-                        // Footer Title
-
-Route::get('back-footerTitle', [FooterTitleController::class, 'index']);
-Route::post('store-footerTitle', [FooterTitleController::class, 'store']);
-Route::get('/edit-footerTitle/{id}', [FooterTitleController::class, "edit"]);
-Route::post('/update-footerTitle/{id}', [FooterTitleController::class, 'update']);
-Route::get('/delete-footerTitle/{id}', [FooterTitleController::class, 'destroy']);
-
                         // Footer Link
 
 Route::get('back-footerLink', [FooterLinkController::class, 'index']);
@@ -269,5 +216,12 @@ Route::get('/edit-footerCopyright/{id}', [FooterCopyrightController::class, "edi
 Route::post('/update-footerCopyright/{id}', [FooterCopyrightController::class, 'update']);
 Route::get('/delete-footerCopyright/{id}', [FooterCopyrightController::class, 'destroy']);
 
+                        // Title 
+
+Route::get('back-title', [TitleController::class, 'index']);
+Route::post('store-title', [TitleController::class, 'store']);
+Route::get('/edit-title/{id}', [TitleController::class, "edit"]);
+Route::post('/update-title/{id}', [TitleController::class, 'update']);
+Route::get('/delete-title/{id}', [TitleController::class, 'destroy']);
 
 

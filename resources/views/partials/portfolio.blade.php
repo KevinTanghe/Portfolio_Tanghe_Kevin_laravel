@@ -2,11 +2,9 @@
     <div class="container">
 
         <div class="section-title">
-            @foreach ($portfolioTitle as $item)
-                <span>{{$item->ombreTitle}}</span>
-                <h2>{{$item->title}}</h2>
-                <p>{{$item->sousTitle}}</p>
-            @endforeach
+            <span>{{$title[4]->title}}</span>
+            <h2>{{$title[4]->title}}</h2>
+            <p>{{$title[4]->sousTitle}}</p>
         </div>
 
         <div class="row portfolio-container bg-grey">

@@ -11,19 +11,15 @@
                 </ul>
             </div>
         @endif
-        <form action="/update-strongTitle/{{ $edit->id }}" method="POST">
+        <form action="/update-title/{{ $edit->id }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Ombre Title</label>
-                <input type="text" name="ombreTitle" value="{{ old('ombreTitle') ? old('ombreTitle') : $edit->ombreTitle}}" class="form-control" id="exampleInputEmail1"
+                <label for="exampleInputEmail1">Titre</label>
+                <input type="text" name="title" value="{{ old('title') ? old('title') : $edit->title}}" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
-                <input type="text" name="title" value="{{ old('title') ? old('title') : $edit->title }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Sous Title</label>
+                <label for="exampleInputEmail1">Sous Titre</label>
                 <input type="text" name="sousTitle" value="{{ old('sousTitle') ? old('sousTitle') : $edit->sousTitle }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

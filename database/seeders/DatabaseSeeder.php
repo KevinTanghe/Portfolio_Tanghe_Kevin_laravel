@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\FooterCopyright;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,13 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             NavbarSeeder::class,
-            HeroSeeder::class,
-            AboutTitleSeeder::class,
             AboutDescriptionSeeder::class,
             AboutProjectSeeder::class,
             AboutProgressSeeder::class,
 
-            ResumeTitleSeeder::class,
             ResumeSumarySeeder::class,
             ResumeSumaryContentSeeder::class,
             ResumeEducationSeeder::class,
@@ -31,13 +27,10 @@ class DatabaseSeeder extends Seeder
             ResumeSecondProSeeder::class,
             ResumeSecondJobSeeder::class,
 
-            StrongTitleSeeder::class,
             StrongCardSeeder::class,
 
-            PortfolioTitleSeeder::class,
             PortfolioGallerySeeder::class,
 
-            ContactTitleSeeder::class,
             ContactSocialSeeder::class,
             ContactSocialLinkSeeder::class,
             ContactEmailSeeder::class,
@@ -45,9 +38,10 @@ class DatabaseSeeder extends Seeder
             ContactCallSeeder::class,
             ContactCallLinkSeeder::class,
 
-            FooterTitleSeeder::class,
             FooterLinkSeeder::class,
-            FooterCopyrightSeeder::class
+            FooterCopyrightSeeder::class,
+
+            TitleSeeder::class,
 
         ]);
     }

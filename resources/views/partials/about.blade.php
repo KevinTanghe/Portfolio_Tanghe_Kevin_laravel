@@ -2,11 +2,9 @@
     <div class="container">
 
         <div class="section-title">
-            @foreach ($aboutTitle as $item)
-                <span>{{$item->ombreTitre}}</span>
-                <h2>{{$item->titre}}</h2>
-                <p>{{$item->sousTitre}}</p>
-            @endforeach
+            <span>{{$title[1]->title}}</span>
+            <h2>{{$title[1]->title}}</h2>
+            <p>{{$title[1]->sousTitle}}</p>
         </div>
 
         <div class="row">

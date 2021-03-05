@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStrongTitlesTable extends Migration
+class CreateTitlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateStrongTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('strong_titles', function (Blueprint $table) {
+        Schema::create('titles', function (Blueprint $table) {
             $table->id();
-            $table->string('ombreTitle');
             $table->string('title');
             $table->string('sousTitle');
             $table->timestamps();
@@ -29,6 +28,6 @@ class CreateStrongTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('strong_titles');
+        Schema::dropIfExists('titles');
     }
 }

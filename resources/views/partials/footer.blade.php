@@ -1,8 +1,6 @@
 <footer id="footer">
     <div class="container">
-        @foreach ($footerTitle as $item)
-            <h3>{{$item->title}}</h3>
-        @endforeach
+        <h3>{{$title[0]->title}}</h3>
         <div class="social-links">
             @foreach ($footerLink as $item)
                 <a href="{{$item->lien}}" class="{{$item->name}}"><i class="{{$item->icon}}"></i></a>

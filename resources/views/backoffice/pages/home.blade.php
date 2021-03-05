@@ -14,12 +14,8 @@
                     <td><a class="btn btn-primary" href="/back-navbar">Show</a></td>
                 </tr>
                 <tr>
-                    <th scope="row">Hero</th>
-                    <th><a class="btn btn-primary" href="/back-hero">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">About Title</th>
-                    <th><a class="btn btn-primary" href="/back-aboutTitle">Show</a></th>
+                    <th scope="row">Titre</th>
+                    <th><a class="btn btn-primary" href="/back-title">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">About Description</th>
@@ -32,10 +28,6 @@
                 <tr>
                     <th scope="row">About Progress</th>
                     <th><a class="btn btn-primary" href="/back-aboutProgress">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">Resume Title</th>
-                    <th><a class="btn btn-primary" href="/back-resumeTitle">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Resume Sumary</th>
@@ -66,24 +58,12 @@
                     <th><a class="btn btn-primary" href="/back-resumeSecondJob">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Strong Title</th>
-                    <th><a class="btn btn-primary" href="/back-strongTitle">Show</a></th>
-                </tr>
-                <tr>
                     <th scope="row">Strong Card</th>
                     <th><a class="btn btn-primary" href="/back-strongCard">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Portfolio Title</th>
-                    <th><a class="btn btn-primary" href="/back-portfolioTitle">Show</a></th>
-                </tr>
-                <tr>
                     <th scope="row">Portfolio Gallery</th>
                     <th><a class="btn btn-primary" href="/back-portfolioGallery">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">Contact Title</th>
-                    <th><a class="btn btn-primary" href="/back-contactTitle">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Contact Social</th>
@@ -110,12 +90,12 @@
                     <th><a class="btn btn-primary" href="/back-contactCallLink">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Footer Title</th>
-                    <th><a class="btn btn-primary" href="/back-footerTitle">Show</a></th>
-                </tr>
-                <tr>
                     <th scope="row">Footer Link</th>
                     <th><a class="btn btn-primary" href="/back-footerLink">Show</a></th>
+                </tr>
+                <tr>
+                    <th scope="row">Footer Copyright</th>
+                    <th><a class="btn btn-primary" href="/back-footerCopyright">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Footer Copyright</th>

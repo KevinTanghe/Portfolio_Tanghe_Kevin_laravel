@@ -2,11 +2,9 @@
     <div class="container">
 
         <div class="section-title">
-            @foreach ($contactTitle as $item)
-                <span>{{$item->ombreTitle}}</span>
-                <h2>{{$item->title}}</h2>
-                <p>{{$item->sousTitle}}</p>
-            @endforeach
+            <span>{{$title[5]->title}}</span>
+            <h2>{{$title[5]->title}}</h2>
+            <p>{{$title[5]->sousTitle}}</p>
         </div>
 
         <div class="row">

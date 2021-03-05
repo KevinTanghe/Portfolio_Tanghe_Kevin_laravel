@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactTitle;
+use App\Models\Title;
 use Illuminate\Http\Request;
 
-class ContactTitleController extends Controller
+class TitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ContactTitleController extends Controller
      */
     public function index()
     {
-        $contactTitle = ContactTitle::all();
+        $title = Title::all();
 
-        return view('backoffice/pages/contactTitle', compact('contactTitle'));
+        return view('backoffice/pages/title', compact('title'));
     }
 
     /**
@@ -38,13 +38,11 @@ class ContactTitleController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-            'ombreTitle' => 'required',
             'title' => 'required',
             'sousTitle' => 'required'
         ]);
 
-        $store = new ContactTitle;
-        $store->ombreTitle = $request->ombreTitle;
+        $store = new Title;
         $store->title = $request->title;
         $store->sousTitle = $request->sousTitle;
         $store->save();
@@ -54,10 +52,10 @@ class ContactTitleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ContactTitle  $contactTitle
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function show(ContactTitle $contactTitle)
+    public function show(Title $title)
     {
         //
     }
@@ -65,49 +63,47 @@ class ContactTitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ContactTitle  $contactTitle
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $edit = ContactTitle::find($id);
+        $edit = Title::find($id);
 
-        return view('backoffice/edit/contactTitleEdit', compact('edit'));
+        return view('backoffice/edit/titleEdit', compact('edit'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ContactTitle  $contactTitle
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $validation = $request->validate([
-            'ombreTitle' => 'required',
             'title' => 'required',
             'sousTitle' => 'required'
         ]);
 
-        $update = ContactTitle::find($id);
-        $update->ombreTitle = $request->ombreTitle;
+        $update = Title::find($id);
         $update->title = $request->title;
         $update->sousTitle = $request->sousTitle;
         $update->save();
-        return redirect('/back-contactTitle');
+        return redirect('/back-title');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ContactTitle  $contactTitle
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $destroy = ContactTitle::find($id);
+        $destroy = Title::find($id);
         $destroy->delete();
-        return redirect('/back-contactTitle');
+        return redirect('/back-title');
     }
 }
