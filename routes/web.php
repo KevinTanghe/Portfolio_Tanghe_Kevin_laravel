@@ -3,12 +3,10 @@
 use App\Http\Controllers\AboutDescriptionController;
 use App\Http\Controllers\AboutProgressController;
 use App\Http\Controllers\AboutProjectController;
-use App\Http\Controllers\ContactCallController;
 use App\Http\Controllers\ContactCallLinkController;
-use App\Http\Controllers\ContactEmailController;
 use App\Http\Controllers\ContactEmailLinkController;
-use App\Http\Controllers\ContactSocialController;
 use App\Http\Controllers\ContactSocialLinkController;
+use App\Http\Controllers\ContactTitleController;
 use App\Http\Controllers\FooterCopyrightController;
 use App\Http\Controllers\FooterLinkController;
 use App\Http\Controllers\HomeController;
@@ -101,6 +99,14 @@ Route::get('/edit-strongCard/{id}', [StrongCardController::class, "edit"]);
 Route::post('/update-strongCard/{id}', [StrongCardController::class, 'update']);
 Route::get('/delete-strongCard/{id}', [StrongCardController::class, 'destroy']);
 
+                        // Contact Title
+
+Route::get('back-contactTitle', [ContactTitleController::class, 'index']);
+Route::post('store-contactTitle', [ContactTitleController::class, 'store']);
+Route::get('/edit-contactTitle/{id}', [ContactTitleController::class, "edit"]);
+Route::post('/update-contactTitle/{id}', [ContactTitleController::class, 'update']);
+Route::get('/delete-contactTitle/{id}', [ContactTitleController::class, 'destroy']);
+
                         // Portfolio Gallery
 
 Route::get('back-portfolioGallery', [PortfolioGalleryController::class, 'index']);
@@ -108,14 +114,6 @@ Route::post('store-portfolioGallery', [PortfolioGalleryController::class, 'store
 Route::get('/edit-portfolioGallery/{id}', [PortfolioGalleryController::class, "edit"]);
 Route::post('/update-portfolioGallery/{id}', [PortfolioGalleryController::class, 'update']);
 Route::get('/delete-portfolioGallery/{id}', [PortfolioGalleryController::class, 'destroy']);
-
-                        // Contact Social
-
-Route::get('back-contactSocial', [ContactSocialController::class, 'index']);
-Route::post('store-contactSocial', [ContactSocialController::class, 'store']);
-Route::get('/edit-contactSocial/{id}', [ContactSocialController::class, "edit"]);
-Route::post('/update-contactSocial/{id}', [ContactSocialController::class, 'update']);
-Route::get('/delete-contactSocial/{id}', [ContactSocialController::class, 'destroy']);
 
                         // Contact Social Link
 
@@ -125,14 +123,6 @@ Route::get('/edit-contactSocialLink/{id}', [ContactSocialLinkController::class, 
 Route::post('/update-contactSocialLink/{id}', [ContactSocialLinkController::class, 'update']);
 Route::get('/delete-contactSocialLink/{id}', [ContactSocialLinkController::class, 'destroy']);
 
-                        // Contact Email
-
-Route::get('back-contactEmail', [ContactEmailController::class, 'index']);
-Route::post('store-contactEmail', [ContactEmailController::class, 'store']);
-Route::get('/edit-contactEmail/{id}', [ContactEmailController::class, "edit"]);
-Route::post('/update-contactEmail/{id}', [ContactEmailController::class, 'update']);
-Route::get('/delete-contactEmail/{id}', [ContactEmailController::class, 'destroy']);
-
                         // Contact Email Link
 
 Route::get('back-contactEmailLink', [ContactEmailLinkController::class, 'index']);
@@ -140,14 +130,6 @@ Route::post('store-contactEmailLink', [ContactEmailLinkController::class, 'store
 Route::get('/edit-contactEmailLink/{id}', [ContactEmailLinkController::class, "edit"]);
 Route::post('/update-contactEmailLink/{id}', [ContactEmailLinkController::class, 'update']);
 Route::get('/delete-contactEmailLink/{id}', [ContactEmailLinkController::class, 'destroy']);
-
-                        // Contact Call
-
-Route::get('back-contactCall', [ContactCallController::class, 'index']);
-Route::post('store-contactCall', [ContactCallController::class, 'store']);
-Route::get('/edit-contactCall/{id}', [ContactCallController::class, "edit"]);
-Route::post('/update-contactCall/{id}', [ContactCallController::class, 'update']);
-Route::get('/delete-contactCall/{id}', [ContactCallController::class, 'destroy']);
 
                         // Contact Call Link
 

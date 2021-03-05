@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\AboutDescription;
 use App\Models\AboutProgress;
 use App\Models\AboutProject;
-use App\Models\ContactCall;
 use App\Models\ContactCallLink;
-use App\Models\ContactEmail;
 use App\Models\ContactEmailLink;
-use App\Models\ContactSocial;
 use App\Models\ContactSocialLink;
+use App\Models\ContactTitle;
 use App\Models\FooterCopyright;
 use App\Models\FooterLink;
 use App\Models\Navbar;
@@ -28,6 +26,7 @@ class HomeController extends Controller
     public function index(){
 
         $navbar = Navbar::all();
+        $title = Title::all();
 
         $aboutDescription = AboutDescription::all();
         $aboutProject = AboutProject::all();
@@ -42,19 +41,16 @@ class HomeController extends Controller
 
         $portfolioGallery = PortfolioGallery::all();
 
-        $contactSocial = ContactSocial::all();
+        $contactTitle = ContactTitle::all();
         $contactSocialLink = ContactSocialLink::all();
-        $contactEmail = ContactEmail::all();
         $contactEmailLink = ContactEmailLink::all();
-        $contactCall = ContactCall::all();
         $contactCallLink = ContactCallLink::all();
 
         $footerLink = FooterLink::all();
         $footerCopyright = FooterCopyright::all();
 
-        $title = Title::all();
 
-        return view('pages/welcome', compact('navbar', 'aboutDescription', 'aboutProject', 'aboutProgress', 'resumeSumaryContent', 'resumeFirstJob', 'resumeSecondJob', 'strongCard', 'portfolioGallery', 'contactSocial','contactSocialLink', 'contactEmail', 'contactEmailLink', 'contactCall', 'contactCallLink', 'footerLink', 'footerCopyright', 'title', 'resumeTitle'));
+        return view('pages/welcome', compact('navbar', 'aboutDescription', 'aboutProject', 'aboutProgress', 'resumeSumaryContent', 'resumeFirstJob', 'resumeSecondJob', 'strongCard', 'portfolioGallery','contactSocialLink', 'contactEmailLink', 'contactCallLink', 'footerLink', 'footerCopyright', 'title', 'resumeTitle', 'contactTitle'));
     }
 
     public function back() {

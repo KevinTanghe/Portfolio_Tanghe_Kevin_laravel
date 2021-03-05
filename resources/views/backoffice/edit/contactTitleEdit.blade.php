@@ -11,7 +11,7 @@
                 </ul>
             </div>
         @endif
-        <form action="/update-contactCall/{{ $edit->id }}" method="POST">
+        <form action="/update-contactTitle/{{ $edit->id }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Icon</label>

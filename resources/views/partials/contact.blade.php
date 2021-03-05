@@ -14,10 +14,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="info-box">
-                            @foreach ($contactSocial as $item)
-                                <i class="{{$item->icon}}"></i>
-                                <h3>{{$item->title}}</h3>
-                            @endforeach
+                            <i class="{{$contactTitle[0]->icon}}"></i>
+                            <h3>{{$contactTitle[0]->title}}</h3>
                             <div class="social-links">
                                 @foreach ($contactSocialLink as $item)
                                     <a href="{{$item->lien}}" class="{{$item->name}}"><i class="{{$item->icon}}"></i></a>
@@ -27,10 +25,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="info-box mt-4">
-                            @foreach ($contactEmail as $item)
-                                <i class="{{$item->icon}}"></i>
-                                <h3>{{$item->title}}</h3>
-                            @endforeach
+                            <i class="{{$contactTitle[1]->icon}}"></i>
+                            <h3>{{$contactTitle[1]->title}}</h3>
                             @foreach ($contactEmailLink as $item)
                                 <a href="mailto:{{$item->mail}}">{{$item->mail}}</a>
                             @endforeach
@@ -38,10 +34,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="info-box mt-4">
-                            @foreach ($contactCall as $item)
-                                <i class="{{$item->icon}}"></i>
-                                <h3>{{$item->title}}</h3>
-                            @endforeach
+                            <i class="{{$contactTitle[2]->icon}}"></i>
+                            <h3>{{$contactTitle[2]->title}}</h3>
                             @foreach ($contactCallLink as $item)
                                 <a href="tel:{{$item->phone}}">{{$item->phone}}</a>  
                             @endforeach

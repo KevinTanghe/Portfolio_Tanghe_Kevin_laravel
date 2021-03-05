@@ -34,11 +34,11 @@
                 </ul>
             </div>
         @endif
-        <form action="/store-portfolioGallery" method="POST">
+        <form action="/store-portfolioGallery" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Img</label>
-                <input type="text" name="img" value="{{old('img')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="file" name="img" value="{{old('img')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Title</label>

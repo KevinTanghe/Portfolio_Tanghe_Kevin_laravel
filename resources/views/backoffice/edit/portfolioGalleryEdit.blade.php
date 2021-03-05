@@ -11,11 +11,11 @@
                 </ul>
             </div>
         @endif
-        <form action="/update-portfolioGallery/{{ $edit->id }}" method="POST">
+        <form action="/update-portfolioGallery/{{ $edit->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Img</label>
-                <input type="text" name="img" value="{{ old('img') ? old('img') : $edit->img}}" class="form-control" id="exampleInputEmail1"
+                <input type="file" name="img" value="{{ old('img') ? old('img') : $edit->img}}" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
             </div>
             <div class="form-group">

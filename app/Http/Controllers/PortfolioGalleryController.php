@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PortfolioGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioGalleryController extends Controller
 {
@@ -41,9 +42,9 @@ class PortfolioGalleryController extends Controller
             'img' => 'required',
             'title' => 'required'
         ]);
-
         $store = new PortfolioGallery;
-        $store->img = $request->img;
+        Storage::put('public', $request->file('img'));
+        $store->img = $request->file('img')->hashName();
         $store->title = $request->title;
         $store->save();
         return redirect()->back();
@@ -88,7 +89,10 @@ class PortfolioGalleryController extends Controller
         ]);
 
         $update = PortfolioGallery::find($id);
-        $update->img = $request->img;
+        Storage::delete("public/".$update->img);
+        $update->delete();
+        Storage::put('public', $request->file('img'));
+        $update->img = $request->file('img')->hashName();
         $update->title = $request->title;
         $update->save();
         return redirect('/back-portfolioGallery');

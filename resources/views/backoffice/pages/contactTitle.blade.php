@@ -14,13 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($contactSocial as $item)
+                @foreach ($contactTitle as $item)
                     <tr>
                         <th scope="row">{{ $item->id }}</th>
                         <td>{{ $item->icon }}</td>
                         <td>{{ $item->title }}</td>
-                        <td><a class="btn btn-success" href="/edit-contactSocial/{{$item->id}}">Edit</a></td>
-                        <td><a class="btn btn-danger" href="/delete-contactSocial/{{$item->id}}">Delete</a></td>
+                        <td><a class="btn btn-success" href="/edit-contactTitle/{{$item->id}}">Edit</a></td>
+                        <td><a class="btn btn-danger" href="/delete-contactTitle/{{$item->id}}">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
         @endif
-        <form action="/store-contactSocial" method="POST">
+        <form action="/store-contactTitle" method="POST">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Icon</label>

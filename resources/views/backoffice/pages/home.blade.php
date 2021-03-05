@@ -54,24 +54,16 @@
                     <th><a class="btn btn-primary" href="/back-portfolioGallery">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Contact Social</th>
-                    <th><a class="btn btn-primary" href="/back-contactSocial">Show</a></th>
+                    <th scope="row">Contact Title</th>
+                    <th><a class="btn btn-primary" href="/back-contactTitle">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Contact Social Link</th>
                     <th><a class="btn btn-primary" href="/back-contactSocialLink">Show</a></th>
                 </tr>
                 <tr>
-                    <th scope="row">Contact Mail</th>
-                    <th><a class="btn btn-primary" href="/back-contactEmail">Show</a></th>
-                </tr>
-                <tr>
                     <th scope="row">Contact Mail Link</th>
                     <th><a class="btn btn-primary" href="/back-contactEmailLink">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">Contact Call</th>
-                    <th><a class="btn btn-primary" href="/back-contactCall">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Contact Call Link</th>
@@ -80,10 +72,6 @@
                 <tr>
                     <th scope="row">Footer Link</th>
                     <th><a class="btn btn-primary" href="/back-footerLink">Show</a></th>
-                </tr>
-                <tr>
-                    <th scope="row">Footer Copyright</th>
-                    <th><a class="btn btn-primary" href="/back-footerCopyright">Show</a></th>
                 </tr>
                 <tr>
                     <th scope="row">Footer Copyright</th>

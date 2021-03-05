@@ -20,23 +20,17 @@ class DatabaseSeeder extends Seeder
             AboutProgressSeeder::class,
 
             ResumeTitleSeeder::class,
-            ResumeSumarySeeder::class,
             ResumeSumaryContentSeeder::class,
-            ResumeEducationSeeder::class,
-            ResumeFirstProSeeder::class,
             ResumeFirstJobSeeder::class,
-            ResumeSecondProSeeder::class,
             ResumeSecondJobSeeder::class,
 
             StrongCardSeeder::class,
 
             PortfolioGallerySeeder::class,
 
-            ContactSocialSeeder::class,
+            ContactTitleSeeder::class,
             ContactSocialLinkSeeder::class,
-            ContactEmailSeeder::class,
             ContactEmailLinkSeeder::class,
-            ContactCallSeeder::class,
             ContactCallLinkSeeder::class,
 
             FooterLinkSeeder::class,

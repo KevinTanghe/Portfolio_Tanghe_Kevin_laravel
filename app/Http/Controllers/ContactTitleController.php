@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactSocial;
+use App\Models\ContactTitle;
 use Illuminate\Http\Request;
 
-class ContactSocialController extends Controller
+class ContactTitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ContactSocialController extends Controller
      */
     public function index()
     {
-        $contactSocial = ContactSocial::all();
+        $contactTitle = ContactTitle::all();
 
-        return view('backoffice/pages/contactSocial', compact('contactSocial'));
+        return view('backoffice/pages/contactTitle', compact('contactTitle'));
     }
 
     /**
@@ -42,7 +42,7 @@ class ContactSocialController extends Controller
             'title' => 'required'
         ]);
 
-        $store = new ContactSocial;
+        $store = new ContactTitle;
         $store->icon = $request->icon;
         $store->title = $request->title;
         $store->save();
@@ -52,10 +52,10 @@ class ContactSocialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ContactSocial  $contactSocial
+     * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
-    public function show(ContactSocial $contactSocial)
+    public function show(ContactTitle $contactTitle)
     {
         //
     }
@@ -63,21 +63,21 @@ class ContactSocialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ContactSocial  $contactSocial
+     * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $edit = ContactSocial::find($id);
+        $edit = ContactTitle::find($id);
 
-        return view('backoffice/edit/contactSocialEdit', compact('edit'));
+        return view('backoffice/edit/contactTitleEdit', compact('edit'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ContactSocial  $contactSocial
+     * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -87,23 +87,23 @@ class ContactSocialController extends Controller
             'title' => 'required'
         ]);
 
-        $update = ContactSocial::find($id);
+        $update = ContactTitle::find($id);
         $update->icon = $request->icon;
         $update->title = $request->title;
         $update->save();
-        return redirect('/back-contactSocial');
+        return redirect('/back-contactTitle');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ContactSocial  $contactSocial
+     * @param  \App\Models\ContactTitle  $contactTitle
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $destroy = ContactSocial::find($id);
+        $destroy = ContactTitle::find($id);
         $destroy->delete();
-        return redirect('/back-contactSocial');
+        return redirect('/back-contactTitle');
     }
 }
